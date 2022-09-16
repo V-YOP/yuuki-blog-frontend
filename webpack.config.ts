@@ -38,6 +38,10 @@ const conf: Configuration = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/, // 图片文件按 url
+        type: 'asset/resource'
       }
     ]
   },
