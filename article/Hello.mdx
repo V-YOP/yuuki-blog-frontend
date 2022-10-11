@@ -1,0 +1,117 @@
+---
+title: 《Fundamentals of Music Theory》 笔记 Week 1
+description: Coursera 每月 350 块钱，这不多学点东西就太亏了是吧？
+tags:
+  - 乐理
+date: 2022-08-13 19:59:59
+---
+
+最近看 Coursera，它的模块都是按周来组织的，感觉这拿来当成笔记的粒度会很合适？试试吧。下面是 [《Fundamentals of Music Theory》](https://www.coursera.org/learn/edinburgh-music-theory) 第一周的笔记。
+
+# Musical Notes
+
+音乐有水平和垂直两个方向，水平方向即时间（时值），垂直方向即音高 Pitch。
+
+音符 note 即**能分辨出频率高 high，低 low** 的一段声音 sound，它的“高低”即为音高，如吉他，钢琴发出的声音都是可以辨识出来，因此可以唱出来的，因此属于音符，有自己的音高，但像鼓发成的声音唱不出来（分辨不出来他究竟多高）。
+
+我们将音符命名为 ABCDEFG，到了头后再次循环，如 CDEFGABCDEFG，**这次循环的音到下次循环的同一个音中的音频率相差 2 倍**，它们的距离 distance，或者说音程 interval 为**纯八度 Octave**，一般简称为八度。
+
+现在最标准的记谱法是五线谱，它有五条线 Line 以及其中四个间 Space 组成，上下能有加线（Ledger Line），其在垂直方向上表示音高，水平方向上表示时间，音符可以在线上或间上，线和它相邻的间的音符相差两度 Second，vise versa。
+
+五线谱垂直方向的音高是相对的，**需要一个谱号 Clef 去确定绝对音高**，最常用的是 G 谱号或高音谱号 Treble-Clef，G 谱号特点是它从下往上第二线上开始绘制，表示该线音高为 G；**从下往上，五条线的音名分别是 EGBDF（Every Good Band Deserves Fans），四个间的音名分别为 FACE**，能注意到 FACE 后面接的又是 EGBDF，使用此法可以推出任何位置的音高。
+
+容易看到，相隔一个八度的两个音，必然一个在线上，一个在间上。
+
+# Octave
+
+钢琴的键可以按八度去分割，每个八度都包含三白键+两黑键，四白键+三黑键的一个组合，总共 12 个键，其中白键音名分别为 CDEFGAB。一个八度有 12 个键，代表一个八度有 12 个音，每个相邻的音的距离为一个半音 semitone，或 half step，两个半音名为全音 tone，或 whole step。一个八度为 12 个半音，即 6 个全音。
+
+C 到 D，D 到 E，F 到 G，G 到 A，A 到 B 为全音，E 到 F，B 到 C 为半音。音符之间的距离（即音程）用度去表示，如 C 到 D 称为两度 Second，E 到 F 也称为两度（这也是有上下文的），C 到 E 称为三度 Third，C 到 F 称为四度 Fourth……以此类推。
+
+# Scale
+
+音阶 Scale，即**跨越一个八度的一个音符序列，其中各个位置的音符的相互关系是固定的**，如 CDEFGABC，CDEFGC，ABCDEFGA 等，都是合法的音阶，音阶中各个位置称为级音 Degree，使用数字或罗马数字表示。
+
+音阶有两个属性——**主音 Tonic**以及**调式 Mode**，两者统称调性 Tonality（或者 Quality？）。
+
+主音即音阶的出发点，调式即音阶之中各音之间的关系，只有同时确定主音以及调式，才能确定音阶中各个音的绝对音名。
+
+比如对 C 大调（其中 C 为主音，调性为**大调 Major**）C Major，它为 CDEFGABC，其中各级音分别为：
+
+|音级|1|2|3|4|5|6|7|8|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|音名|C|D|E|F|G|A|B|C|
+
+![](/images/articles/《Fundamentals_of_Music_Theory》学习笔记_1/C_Major_Scale.png)
+
+对 G 大调 G Major，为：
+
+|音级|1|2|3|4|5|6|7|8|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|音名|G|A|B|C|D|E|F#|G|
+
+这里的 F# 为 F 高一个半音，读作升 F F **sharp**（就是 C# 那个 sharp）。
+
+能看到，C 大调和 G 大调各音之间的关系是确定的——它们的距离分别为全音，全音，半音，全音，全音，全音，半音，简称全全半全全全半 TTSTTTS，**这种关系即调式**。调式就像一种模式 Pattern，能从任何音出发去构造相同调式的音阶。
+
+比如，对 F Major，得到 F G A Bb C D E F，其中 Bb 读作降 B B **flat**，其为 B 降一个半音。
+
+音阶中各音的命名有下面的要求：
+
+1. **不能有重复的字母**，比如 C Major，不能写作 C D E E# G A B C。
+2. 不能混用升降号，必须全为（重）升号/降号。
+
+音阶中有多少个音，称为几声音阶。像这种由**两个半音，五个全音**组成的七声音阶，叫做全音阶或自然音阶 Diatonic Scale。从钢琴上任何一个白键开始的，只使用白键的，相邻的八个音组成的音阶都是自然音阶，它有**七种调式**，称为中古调式或教会调式 Church Mode，其中大调是第一种调式，名为 Ionian，小调 Minor（TSTTSTT）是第六种调式，名为 Aeolian。
+
+音阶中一级音称为主音 tonic，五级音称为属音 dominant（表示占据主导地位），四级音称为下属音 subdominant。
+
+在实际的音乐中，音阶上每个音出现的概率并非等同，主音和 5 级，4 级，7 级音是出现最多的，这就能暗示调性以及一些其他特征。
+
+音阶帮助构建音乐。
+
+# Chord
+
+和弦 Chord 即同时演奏多个音，音阶同和弦密不可分。
+
+和弦的属性同样称作 Quality。
+
+**同时演奏音阶的一级，三级，五级音称为三和弦 Triad**；如演奏 C 大三和弦 C Major Triad（简写 C Maj，CM），就是同时演奏 C 大调的一三五级音 CEG；A 小三和弦 A Minor Triad（简写 A minor，Am），就是同时演奏 A 小调的一级，三级，五级音。
+
+![C Maj](/images/articles/《Fundamentals_of_Music_Theory》学习笔记_1/C_Major_Triad.png)
+
+![A minor](/images/articles/《Fundamentals_of_Music_Theory》学习笔记_1/A_Minor_Triad.png)
+
+除了从 B 到 F，**其他五度音程均为 7 个半音，称为纯五度 Perfect Fifth**，也就是说除了 BDF，其他**三和弦一级和五级音音程都是纯五度**。但所有大和弦 Major Scale，第一个音和第二个音相隔四个半音，第二个音和第三个音相隔三个半音，小和弦 Minor Scale 则相反。
+
+**相隔四个半音称为大三度（Major Third），相隔三个半音称为小三度（Minor Third）**。可以说大三度+小三度=大三和弦，小三度+大三度=小三和弦。
+
+下面展示了从 C 大调上所有音开始的三和弦，容易看到，从 C，F，G（正巧是根音，下属音，属音）开始的三和弦为大三和弦，D，E，A 开始的三和弦为小三和弦，从 B 开始的为减三和弦 Diminished Triad，减三和弦=小三度+小三度。
+
+![](/images/articles/《Fundamentals_of_Music_Theory》学习笔记_1/Triads_From_C_Major_Scale.png)
+
+可以注意到，对所有五度音程，只有 BF 是减五度（或增四度，三全音），其它五度音程均为纯五度，这在推导五度圈的时候很方便——除了BF，所有音符增加一个纯五度时升降号不会改变。
+
+# Primary Chords
+
+下面的例子应该也可以推广到其他主音，其他调式，但这超纲了，对它的抽象留待将来吧。
+
+C 大调中所有三和弦中，C，F，G 三个大三和弦是最重要的，它们称为 Three Chord Trick（TCT，三和弦技巧？），其中 CMaj 称为**主三和弦 Tonic Triad**，GMaj 称为**属三和弦 Dominant Triad**，FMaj 称为**下属三和弦 SubDominant Triad**。
+
+**当我们试图对一段旋律 Melody 进行和声 Harmonize 的时候，可以选择这样的和弦进行和声，即旋律中的音符在它的成员中。C 大调中每一个音符，都能使用 CMaj，FMaj，GMaj 之一去进行和声**。这是一个常见的实践。
+
+![](/images/articles/《Fundamentals_of_Music_Theory》学习笔记_1/TCT_CMajor_Scale.png)
+
+比如，当旋律音符为 C 的时候，可以选择 CMaj（CEG）或 FMaj（FAC），因为 C 为这两个和弦中的成员。当旋律音符为 D 的时候，可以选择 GMaj（GBD）去和声。
+![](/images/articles/《Fundamentals_of_Music_Theory》学习笔记_1/TCT_Harmony.png)
+
+这太酷了！
+
+# Duration
+
+时值 Duration 即音符持续的时间，这个比较熟悉，跳过了，一个重点是，相临的相同时值的音符连线 Beam 不连线，更多的是约定而非强制，按可读性和实际情况来，视频花大篇幅介绍了弱起 Pickup 或 Anacrusis，这是一种可能不连线的情况。
+
+# 阅读材料
+
+- [泛音列 Harmonic series](https://www.earmaster.com/music-theory-online/ch04/chapter-4-6.html)
+- [调式 Mode (music)](https://en.wikipedia.org/wiki/Mode_(music))
+- [五声音阶 Pentatonic scale](http://en.wikipedia.org/wiki/Pentatonic_scale)

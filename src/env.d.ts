@@ -1,3 +1,4 @@
+/// <reference types="webpack/module" />
 
 declare module '*.gif' {
   const src: string;

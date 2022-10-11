@@ -1,0 +1,75 @@
+
+In a purely functional world, many types are naturally covariant, however, the situation changes once you introduce mutable data. 
+
+考虑下面的一个定义：
+
+```Scala
+class Cell[T](init: T) {
+  private var current = init
+  def get = current
+  def set(x: T) = current = x
+}
+```
+
+T 将会是逆变还是协变的呢？考虑下面的代码段：
+
+```scala
+
+class Animal
+class Cat extends Animal
+class Dog extends Animal
+
+// 假设 T 是协变的，即使用+注解，下面的代码将会是“合法”的
+val cat: Cell[Cat] = new Cell(new Cat()) 
+val animal: Cell[Animal] = cat // 将 Cell[Cat] 赋给 Cell[Animal]，合法，因为 Cell 是协变的，而`Cat <: Animal`，因此`Cell[Cat] <: Cell[Animal]`
+animal.set(new Dog()) // 对 animal（即 cat） 赋值，合法，因为 animal 的类型是 Cell[Animal]，set 接受的类型是 Animal，而 Dog <: Animal，即 Dog 是 Animal
+val realCat: Cat = cat.get // 从 cat 中取值，赋给 realCat 这个 Cat 类型的变量，仍旧合法，但必定会发生运行时错误
+```
+
+上面的每一步都合法，但会导致给一个`Cell[Cat]`赋值了一个 Dog，这显然违背了类型约束。而问题显然在第二步——绝不能把`Cell[Cat]`赋给`Cell[Animal]`，或者说，**并非所有`Cell[Animal]`能做的事情，`Cell[Cat]`都能做**，也就是说违背了里氏代换原则！这实际上也表明，只要使最后的类型关系不违背里氏替换原则，就不会违背类型约束。
+
+这和 Java 的数组有异曲同工之妙，Java 的数组是协变的，下面的代码能通过编译但显然会造成运行时异常。
+
+```java
+Integer[] intArr = {1, 2, 3};
+Object[] objArr = intArr; // 不应该这样！
+objArr[0] = "surprise!";
+```
+
+至于 Java 为何设定数组为协变……这是没有泛型的时代的某些需求的遗留问题。
+
+Scala 的 Array 编译期是不变的，但可以使用 asInstanceOf 去强制转换到其父类的数组，这在运行时不会发生异常，因为 JVM 底层对待数组就是协变的，但仍旧可能抛出运行时异常，这是一种妥协。
+
+还有一种会导致违背型变的情况，考虑一个 Pair 类型，包含一个无副作用的第一个值的 setter（其保证类型不变）：
+
+```scala
+class Pair[+A, +B](first: A, second: B) {
+  def setFirst(value: A): Pair[A, B] = new Pair(value, second)
+}
+```
+
+这无法通过编译，因为如果能够编译，下面的代码能够违背类型约束：
+
+```scala
+class IntPair(first: Int, second: Int) extends Pair[Int, Int](first, second) {
+  override def setFirst(value: Int): Pair[Int, Int] = {
+    println(math.sqrt(value))
+    super.setFirst(value)
+  }
+}
+
+val a : Pair[Any, Any] = new IntPair(1, 2) // valid, cause Int <: Any, Then Pair[Int, Int] <: Pair[Any, Any]
+a.setFirst("hello") // math.sqrt("hello") ?
+```
+
+这证明，不止是可变数据会导致协变无法使用，问题显然是更加广泛的：当类型的某类型参数同时作为方法的类型参数（以及可重新赋值的字段的类型，这样的字段被当作 setter+getter 对待）时，该类型的类型参数可能就无法协变了。
+
+# positive, negative, neutral
+
+Scala 编译器将类型体中出现的类型参数的位置分为三类：positive，negative，以及 neutral，编译器会检查类型上的类型参数的使用位置，其中，协变的类型参数只能在 positive 位置使用，逆变的类型参数只能在 negative 位置使用，不变的类型参数能在任何地方使用，即只有不变的类型参数能在 neutral 位置上使用。
+
+```scala
+class Clazz[-A](value: A) {
+  val a : A = ???
+}
+```

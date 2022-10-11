@@ -8,6 +8,8 @@ import MiniCssExtractPlugin from  "mini-css-extract-plugin"
 const conf: Configuration = {
   mode: 'development', // 默认为production模式
   entry: './src/index.tsx', // 入口js文件，可以配置多个entry
+  devtool: 'inline-source-map',
+  watch: true,
   output: {
     path: path.resolve(__dirname, 'dist'), // 输出路径
     filename: '[name].[chunkhash].js', // 输出文件名，具有一定动态性，如可配置成 [name].[chunkhash].js，其会被替换为名称和一个文件哈希值（以保证浏览器会重新加载，但这需要相关plugin去支持，后面再详述）
